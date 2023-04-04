@@ -9,7 +9,6 @@ Mon profil
         <p><b>Nom de famille: </b>{{$userProfile["lastname"]}}</p>
         <p><b>Prénom: </b>{{$userProfile["firstname"]}}</p>
         <p><b>Email: </b>{{$userProfile["email"]}}</p>
-        <p><b>Description: </b> </p>
     </div>
 </div>
 

@@ -1,5 +1,6 @@
 body {
     margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
 }
 .allUsers {
     border-bottom: 2px solid black;
@@ -7,41 +8,100 @@ body {
 a {
     text-decoration: none;
 }
+.mainLogo {
+    justify-content: flex-start;
+    padding: 1%;
+}
+.mainBanner {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url("../images/mainBanner.jpg");
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    padding: 15%;
+    margin: 0;
+    color: white;
+}
+.homePage h3 {
+    margin: 0;
+}
+.homePage {
+    background-color: black;
+    padding: 3%;
+    text-align: center;
+}
+.navLinks a:hover {
+    background-color: white;
+    color: black;
+}
+.navLinks {
+    display: flex;
+    flex-grow: 2;
+    justify-content: flex-end;
+    gap: 2%;
+}
+.navLinks a {
+    color: white;
+    font-size: large;
+}
 .mainNavbar {
     display: flex;
-    gap: 1%;
-    justify-content: flex-end;
-    border-bottom: 2px solid black;
+    align-items: center;
+    padding: 1%;
+    background-color: black;
+    color: white;
 }
 .profileInfo {
     display: flex;
     gap: 10%;
 }
 .profileCategory {
-    border: 2px solid black;
-    padding: 1% 2% 1%;
-    margin: 1%;
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: large;
+    background-color: black;
+    color: white;
+    margin: 0;
+    width: 100%;
 }
-
+.profileCategory a {
+    color: currentColor;
+}
+button {
+    align-self: center;
+    background-color: yellow;
+    margin: 1%;
+    border-style: none;
+    border-radius: 5px;
+    font-size: large;
+    padding: 1%;
+}
 .categoryName,
 .profileCategory h3 {
     text-decoration: underline;
 }
-.characterCreationForm {
+.creationForm {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    margin: 1%;
-    max-width: 30vw;
-    border: 2px solid black;
-    padding: 1%;
+    align-items: center;
+    width: 100%;
+    padding: 5% 0;
+    background-color: black;
+    color: white;
 }
-.characterCreationForm textarea {
+
+.creationForm textarea {
     resize: none;
 }
-.characterCreationForm input,
-select,
-textarea {
-    margin-bottom: 1%;
+
+/* Media queries*/
+@media screen and (max-width: 800px) {
+    .mainNavbar {
+        flex-direction: column;
+    }
+    .navLinks {
+        flex-direction: column;
+        align-items: center;
+    }
 }

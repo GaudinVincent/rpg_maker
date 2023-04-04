@@ -3,7 +3,7 @@
 Nouveau personnage
 @endsection
 @section('content')
-<form action="{{route('characters.store')}}" method="post" class="characterCreationForm">
+<form action="{{route('characters.store')}}" method="post" class="creationForm">
     @csrf
     <label for="characterName">Nom du personnage:</label>
     <input type="text" name="characterName" id="characterName" placeholder="Nom du personnage" required>

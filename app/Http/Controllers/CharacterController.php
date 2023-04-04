@@ -29,7 +29,7 @@ class CharacterController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'characterName' => 'required|string',
+            'characterName' => 'required|string|unique:characters',
             'description' => 'required|string',
             'classe' => 'required|in:"guerrier","mage","druide","assassin","berserker","archer"',
             'for' => 'required|integer',
@@ -59,7 +59,6 @@ class CharacterController extends Controller
     public function show(string $id)
     {
         $characterID = Character::findOrFail($id);
-        dd($characterID);
         return view('characters.show')->with(['characterID' => $characterID]);
 
     }
@@ -69,7 +68,9 @@ class CharacterController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $characterID = Character::findOrFail($id);
+        return view('characters.edit')->with(['characterID' => $characterID]);
+
     }
 
     /**
@@ -77,7 +78,19 @@ class CharacterController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'characterName' => 'required|string|unique:characters',
+            'description' => 'required|string',
+            'classe' => 'required|in:"guerrier","mage","druide","assassin","berserker","archer"',
+        ]);
+
+        $modifCharacter = Character::findOrFail($id);
+        $modifCharacter->characterName = $request->input('characterName');
+        $modifCharacter->description = $request->input('description');
+        $modifCharacter->classe = $request->input('classe');
+        $modifCharacter->save();
+        return view('characters.update')->with(['modifCharacter' => $modifCharacter]);
+
     }
 
     /**
@@ -85,6 +98,8 @@ class CharacterController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $character = Character::findOrFail($id);
+        $character->delete();
+        return view('characters.destroy')->with(['character' => $character]);
     }
 }

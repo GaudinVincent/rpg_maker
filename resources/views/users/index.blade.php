@@ -7,7 +7,6 @@ Liste des utilisateurs:
     @foreach ($allUsers as $user)
     <div class="allUsers">
         <p><b>Pseudo: </b>{{$user->pseudo}}</p>
-        <p><b>Description: </b></p>
         <p><a href="{{route('users.show', ['user'=> $user->id])}}">Voir le profil</a></p>
     </div>
     @endforeach

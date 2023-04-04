@@ -12,9 +12,9 @@ return new class extends Migration {
     {
         Schema::create('groups', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('character_id');
-            $table->string('name');
+            $table->foreignId('user_id');
             $table->string('description');
+            $table->string('name');
             $table->integer('capacity');
             $table->timestamps();
         });
