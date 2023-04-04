@@ -2,32 +2,46 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 
 class LoginController extends Controller
 {
+    //formulaire de connexion
     public function index()
     {
         return view('login.index');
     }
-    public function authenticate(Request $request): RedirectResponse
+    //on vérifie que l'utilisateur existe 
+    public function authenticate(Request $request)
     {
-        $userLogin = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required'],
+        $credentials = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
         ]);
-        if (Auth::attempt($userLogin)) {
-            Auth::login($userLogin);
-            return redirect()->intended('login.authenticate');
+        //et on le renvoie sur une page de confirmation de connexion
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            return view('login.authenticate')->with(["userSession" => $credentials]);
         }
-        return back()->withErrors([
-            'email' => 'Identifiants incorrects.',
-        ])->onlyInput('email');
+        //sinon on retourne sur la page précédente avec un message d'erreur
+        return back()->withErrors(['email' => 'Identifiants incorrects.']);
 
-
-
+    }
+    //on afffiche le profil d'un utilisateur existant grâce à son ID
+    public function showProfile(string $id)
+    {
+        $userID = User::findOrFail($id);
+        return view('users.show')->with(['userID' => $userID]);
+    }
+    //on déconnecte l'utilisateur et on "détruit" sa session
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return view('login.logout');
     }
 }

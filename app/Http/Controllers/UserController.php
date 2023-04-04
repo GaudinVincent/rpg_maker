@@ -7,38 +7,37 @@ use App\Models\User;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    //on affiche tous les utilisateurs existants
     public function index()
     {
         $users = User::all();
         return view('users.index')->with(['allUsers' => $users]);
-
-
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    //on affiche le formulaire d'inscription
     public function create()
     {
         return view('users.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    //on vérifie que chaque champ du formulaire respecte bien le format
     public function store(Request $request)
     {
-        $user = $request->post();
-        User::create($user);
+        $request->validate([
+            'firstname' => 'required|string',
+            'lastname' => 'required|string',
+            'email' => 'required|email|unique:users',
+            'password' => array(
+                'required',
+                'regex:^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$^'
+            )
+        ]);
+        //puis on crée un nouvel utilisateur dans la base de données via le modèle
+        $user = User::create($request->post());
         return view('users.store')->with(["userCreated" => $user]);
     }
 
-    /**
-     * Display the specified resource.
-     */
+    //on affiche un utilisateur grâce à son id
     public function show(string $id)
     {
         $userID = User::findOrFail($id);

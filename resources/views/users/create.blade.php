@@ -1,3 +1,4 @@
+<!--Formulaire de création de compte !-->
 @extends('layouts.app')
 @section('title')
 S'inscrire    
@@ -11,5 +12,14 @@ S'inscrire
     <input type="email" name="email" id="email" placeholder="Email" required>
     <input type="password" name="password" id="password" placeholder="Mot de passe" pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$" required>
     <button type="submit">Créer un compte</button>
+    @if (count($errors) > 0)
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
 </form>
 @endsection

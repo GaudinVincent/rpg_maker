@@ -1,3 +1,4 @@
+<!--Détails du profil d'un seul utilisateur !-->
 @extends('layouts.app')
 @section('title')
   Profil de {{$userID["pseudo"]}}

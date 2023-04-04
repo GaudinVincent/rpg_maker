@@ -8,5 +8,14 @@ Se connecter
     <input type="email" name="email" placeholder="Email">
     <input type="password" name="password" id="password" placeholder="Mot de passe">
     <button type="submit">S'identifier</button>
+    @if (count($errors) > 0)
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
 </form>    
 @endsection

@@ -1,6 +1,47 @@
+body {
+    margin: 0;
+}
 .allUsers {
     border-bottom: 2px solid black;
 }
 a {
     text-decoration: none;
+}
+.mainNavbar {
+    display: flex;
+    gap: 1%;
+    justify-content: flex-end;
+    border-bottom: 2px solid black;
+}
+.profileInfo {
+    display: flex;
+    gap: 10%;
+}
+.profileCategory {
+    border: 2px solid black;
+    padding: 1% 2% 1%;
+    margin: 1%;
+    display: inline-block;
+}
+
+.categoryName,
+.profileCategory h3 {
+    text-decoration: underline;
+}
+.characterCreationForm {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 1%;
+    max-width: 30vw;
+    border: 2px solid black;
+    padding: 1%;
+}
+.characterCreationForm textarea {
+    resize: none;
+}
+.characterCreationForm input,
+select,
+textarea {
+    margin-bottom: 1%;
 }

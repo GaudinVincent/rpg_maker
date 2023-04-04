@@ -13,12 +13,14 @@ return new class extends Migration {
         Schema::create('characters', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
+            $table->string('characterName');
+            $table->text('description');
             $table->string('classe');
-            $table->integer('MAG');
-            $table->integer('FOR');
-            $table->integer('AGI');
-            $table->integer('INT');
-            $table->integer('PVs');
+            $table->integer('mag');
+            $table->integer('for');
+            $table->integer('agi');
+            $table->integer('int');
+            $table->integer('pvs');
             $table->timestamps();
 
         });

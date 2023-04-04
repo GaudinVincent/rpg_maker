@@ -1,3 +1,4 @@
+<!--Confirmation de la création d'un compte utilisateur et récap de ses informations!-->
 @extends('layouts.app')
 @section('title')
 Votre profil a bien été créé !
