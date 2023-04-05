@@ -4,7 +4,7 @@ Se connecter
 @endsection
 @section('content')
 <div class="creationForm">
-    <form action="{{route('login.authenticate')}}" method="post" class="mdfChar">
+    <form action="{{route('login.authenticate')}}" method="post" class="creationForm">
         @csrf
         <input type="email" name="email" placeholder="Email">
         <input type="password" name="password" id="password" placeholder="Mot de passe">

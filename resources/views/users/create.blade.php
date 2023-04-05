@@ -5,7 +5,7 @@ S'inscrire
 @endsection
 @section('content')
 <div class="creationForm">
-    <form action="{{route('users.store')}}" method="post" class="mdfChar">
+    <form action="{{route('users.store')}}" method="post" class="creationForm">
         @csrf
         <input type="text" name="lastname" id="lastname" placeholder="Nom de famille" required> 
         <input type="text" name="firstname" placeholder="Prénom" required>

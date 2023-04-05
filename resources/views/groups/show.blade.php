@@ -7,6 +7,7 @@
     <p><b>Nom du groupe: </b>{{$groupID["name"]}}</p>
     <p><b>Description du groupe: </b>{{$groupID["description"]}}</p>
     <p><b>Nombre de places: </b>{{$groupID["capacity"]}}</p>
+    <p><b>Membres du groupe: </b><a href="">Voir les membres</a></p>
     <button><a href="{{route('groups.edit', ['group' => $groupID['id']])}}">Modifier le groupe</a></button>
     <form action="{{route('groups.destroy', ['group' => $groupID['id']])}}" method="post">
         @csrf

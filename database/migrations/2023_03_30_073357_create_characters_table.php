@@ -12,7 +12,8 @@ return new class extends Migration {
     {
         Schema::create('characters', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->references('id')->on('users');
+            $table->foreignId('group_id')->nullable()->references('id')->on('groups');
             $table->string('characterName')->unique();
             $table->text('description');
             $table->string('classe');
@@ -22,7 +23,6 @@ return new class extends Migration {
             $table->integer('int');
             $table->integer('pvs');
             $table->timestamps();
-
         });
     }
 
